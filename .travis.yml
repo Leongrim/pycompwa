@@ -45,7 +45,7 @@ matrix:
     env:
     - TASK="clang, ROOT v6.18"
     - ROOTBIN="v6.18.04.macosx64-10.14-clang100"
-    - PATH=/usr/local/opt/python/libexec/bin:$PATH
+    - PATH=/Users/travis/Library/Python/3.7/bin:$PATH
     before_install:
     - echo "Using system python version."
   - os: linux
@@ -59,9 +59,11 @@ matrix:
     - pip3 install pipenv
 
 script:
-- pipenv run python setup.py  --generator "Unix Makefiles" --skip-generator-test install -- -- -j2
-- cd tests
-- if [ "$TRAVIS_OS_NAME" != "osx" ]; then pipenv run python -m pytest; fi
+  - cd $BASEPATH
+  - pipenv run python setup.py  --generator "Unix Makefiles" --skip-generator-test install -- -- -j2
+  - cd tests
+  - if [ "$TRAVIS_OS_NAME" != "osx" ]; then pipenv run python -m pytest; fi
+  - cd $BASEPATH
 
 deploy:
   provider: pypi
