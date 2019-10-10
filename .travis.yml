@@ -3,7 +3,7 @@ language: c++
 branches:
   only:
   - master
-  - dev
+  - /\d+\.\d+\.\d+/ # Run on tags e.g. 0.1.2
   except: gh-pages
 
 env:
@@ -54,10 +54,7 @@ matrix:
     dist: bionic
     env:
     - TASK="deployment"
-    branches: # Run deployment only for tags
-      only: 
-      - /\d+\.\d+\.\d+/ # Regex to select tags e.g. 0.1.2
-    install:  echo "Skipping install stage!"
+    install: echo "Skipping install stage!"
     script: echo "Skipping script stage!"
     before_deploy:
     - pip3 install scikit-build
