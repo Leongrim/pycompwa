@@ -4,7 +4,7 @@ branches:
   only:
   - master
   - dev
-  - /\d+\.\d+\.\d+/
+  - /\d+\.\d+\.\d+/ # Run on tags e.g. 0.1.2
   except: gh-pages
 
 env:
@@ -55,8 +55,8 @@ matrix:
     dist: bionic
     env:
     - TASK="deployment"
-    install:
-    script:
+    install:  echo "Skipping install stage!"
+    script: echo "Skipping script stage!"
     before_deploy:
     - pip3 install scikit-build
     deploy:
