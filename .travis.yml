@@ -66,7 +66,7 @@ matrix:
         secure: bvlu0vG8oOYgLbNRkbZT5QO8AQDRlMuHPUn4U7PIECzQNjFC31Y8ugXTQOPdcNsACc8TR3z52uZ1JmuK4XI9++7HuzRwhMgKziCEwD/fBdZETxXq95LorbMaD8qOY43v5vJAeFDzouDoP3iBVTpJG3dZPk7OrHy0uSSGYnC0M/WqoFg/3Lfg5tlKz8doBbgGVG/vY/58GyDxu3GcSVg7c3A4CNYKk6FwXwbWo7itTzXMJFjWmlolFtNv9m4b4gLrPSvUf7A/BrovC9IYic2N+T/KnbVOBopQ9ggk+uf1eMv1emruNiqUaJ963DMPjE154hbR7Ykvz4ng/CsvI8enmiPg18RoS1DLGxe7LVr0RzZaGsW0gw8q6H6Noc0FzNXwLb5+fDWHJtz87rrVmZZz+ofVpo370Q9y7B6joJ5EBDxPwi/Ef9MBZMEMR1pArX9rnlkVpPit0nvsb+R4e5ZS5CHj7ArSxio5pXLMrEtJyJKpnaeCbjIp5b+UfsVwSbY6i3UpE0HSHDW/Nic02/d9PfgxuBkEp6jb30yajsfWroMpJQyKD/X1qIUO48deUO79Mnu33EGWnccYBbmhMxFNCQnfLVPwKAQm7YM1/WlUa6ictifxlLouG8wZjAUviBcvTjzDY53UUpS/PIkGPL9MrqjLJbsR0XwAwp4leprngyY=
       distributions: sdist
       on:
-        branch: dev
+        tags: true
       skip_existing: true
 script:
 - cd $BASEPATH
