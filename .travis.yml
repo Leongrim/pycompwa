@@ -5,7 +5,6 @@ branches:
   - master
   - dev
   except: gh-pages
-
 env:
   global:
   - GH_REPO_NAME: pycompwa
@@ -14,7 +13,6 @@ env:
   - LANG: en_US.UTF-8
   - BASEPATH: "$TRAVIS_BUILD_DIR"
   - ROOTSYS: "$BASEPATH/root"
-
 addons:
   homebrew:
     packages:
@@ -27,17 +25,15 @@ addons:
     packages:
     - libboost-all-dev
     - libgsl0-dev
-
 install:
-  - cd $BASEPATH
-  - cmake --version
-  - pipenv install
-  - wget https://root.cern.ch/download/root_${ROOTBIN}.tar.gz
-  - tar xpvfz root_*.tar.gz > /dev/null 2>&1
-  - cd root
-  - source bin/thisroot.sh
-  - cd $BASEPATH
-
+- cd $BASEPATH
+- cmake --version
+- pipenv install
+- wget https://root.cern.ch/download/root_${ROOTBIN}.tar.gz
+- tar xpvfz root_*.tar.gz > /dev/null 2>&1
+- cd root
+- source bin/thisroot.sh
+- cd $BASEPATH
 matrix:
   include:
   - os: osx
@@ -58,21 +54,21 @@ matrix:
     - pyenv global 3.7.1
     - pip3 install pipenv
     before_deploy:
-      - pip3 install scikit-build # Install outside venv to make it available at deploy stage
+    - pip3 install scikit-build
     deploy:
       provider: pypi
-      server: https://test.pypi.org/legacy/
       user: "__token__"
       password:
-        secure: "F1LCo60aEYzVVOa4X9rN+ZdHPiUNj5GjYy6NVWj+XpA7fLxf0plHWic3npcwff6bEMqZ9IoLJGMFPIAuFPwizCgxLx1zLtiYuxTxaAlsNRBYVDfpuHr+ejNPnc6EL1VIMl6FJGKY/TdTzz1cHfXreCPaL2nv3z6zFcA8lp1dLNAj2HThVKIG1fsy+Q5xfVMswKzWx7Th+uU3D1W96ITtZKrK80qbiv9akDoX40rn6Pmgqcax5PtCVteMXAHCpnDCWxA8BNcbA1tTr9c/t6mSZFW856fWWhEmOeHti+Ff+3Oa6LxipMmyDMWU5YvhtnyDt7hG2YbbYgk8aWSnhlcC9UVCYCx6jhbMSkVUBjqDiXwgIQb2VntmPKFdIWx3kRXCWqRp6fKuCbeU+Kwv2WtfdPsg/MxuuxZddhls+1WCoSKQxzBuX/ng1ueYcn4tdj/niutKFwxy5PKi3pL4m8SfBC0mspE4VKao6I52gXEQR3Lnu7PYRYOt30ZdtzWWx0z8tXsktmBxxS9BTq6NXJ2mtCk/DnwfGi4JiI/2NTC0AM6rZAaHLoNy9qe7HMFCp0E09FG9qxnUoLPKVPCyCkUiL1Fl9l+KPM8UUzo0rCpOU2Xn4GTOJ2P/iQCA5cg588cw8039VOrRzOsPUlAEKusNiCqNl62HlEufXPf7o3xpSq4="
-      distributions: "sdist" # Upload only source distributions
+        secure: "ZTIPRR3OC7V0P/Ovv1dULLSJ1EMGf9XLn8CsRI+KlTbSLyx9qyiAvjSQsv92dGlMIB52Gqlp1ChQn9d+pKd0412DXWNLSiPHJad+QU+0LmLB/tz2l1lIhOeIM4HJCHRgsKHCojhUjgjUIK8XB/YznVIpVfyDgjGwu8FSUrSTMcZ+2OXpykqFS0YWZXkfNImPuWciboU1W2DUHBRs+uczsuHaYKjrUz90U7XRk7Y55+sg2oMYbGIJmsqzM6tiSoflyxc4DmPHDvO3RynvP8ZSqUAWy5X/8h7pXUwL96Z2hYmoUDOfkKRZHueJGM9Gq28Crkq+5NL4Hc5awTuxv9YLP6GYk18PV5WGdDzooPAce4TI8WWRD1pIZh5wq4XNl4Y/EBDdPhJEIlfSC3yYKQdC1cwGdv+7faytLMplKhJOzZGjXXqdTuuY6dByRaMnsP+oN2L98Fw5Y5fJQjyP0OKwzmQ6vYjVR8DOyILz2dDjmnC8wGSCcHsMorg4tCVyD4AiLZ3+tyBchfIKv1ztQknCsZ84KgiQSuF3HjaE4CwxWpO/h2pmFw+Rgv1B/aE2qrH0/gkzf3SJdBK79vEYMRIptREG7svZpXMU5zg/CvrjQm5WEs5svML4EwD9P68goyea9e2zb2r1HgcphRCLEFTbXJyW/QOEuZsKq6Xby9rkFLo="
+      distributions: sdist
       on:
         branch: dev
-      skip_existing: true # Ignore if dist already exists
+      skip_existing: true
 
 script:
-  - cd $BASEPATH
-  - pipenv run python setup.py  --generator "Unix Makefiles" --skip-generator-test install -- -- -j2
-  - cd tests
-  - if [ "$TRAVIS_OS_NAME" != "osx" ]; then pipenv run python -m pytest; fi
-  - cd $BASEPATH
+- cd $BASEPATH
+- pipenv run python setup.py  --generator "Unix Makefiles" --skip-generator-test install
+  -- -- -j2
+- cd tests
+- if [ "$TRAVIS_OS_NAME" != "osx" ]; then pipenv run python -m pytest; fi
+- cd $BASEPATH
