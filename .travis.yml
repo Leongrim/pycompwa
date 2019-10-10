@@ -61,7 +61,7 @@ matrix:
       - pip3 install scikit-build # Install outside venv to make it available at deploy stage
     deploy:
       provider: pypi
-      server: https://test.pypi.org/legacy/index
+      server: https://test.pypi.org/legacy/
       user: __token__
       password:
         secure: F1LCo60aEYzVVOa4X9rN+ZdHPiUNj5GjYy6NVWj+XpA7fLxf0plHWic3npcwff6bEMqZ9IoLJGMFPIAuFPwizCgxLx1zLtiYuxTxaAlsNRBYVDfpuHr+ejNPnc6EL1VIMl6FJGKY/TdTzz1cHfXreCPaL2nv3z6zFcA8lp1dLNAj2HThVKIG1fsy+Q5xfVMswKzWx7Th+uU3D1W96ITtZKrK80qbiv9akDoX40rn6Pmgqcax5PtCVteMXAHCpnDCWxA8BNcbA1tTr9c/t6mSZFW856fWWhEmOeHti+Ff+3Oa6LxipMmyDMWU5YvhtnyDt7hG2YbbYgk8aWSnhlcC9UVCYCx6jhbMSkVUBjqDiXwgIQb2VntmPKFdIWx3kRXCWqRp6fKuCbeU+Kwv2WtfdPsg/MxuuxZddhls+1WCoSKQxzBuX/ng1ueYcn4tdj/niutKFwxy5PKi3pL4m8SfBC0mspE4VKao6I52gXEQR3Lnu7PYRYOt30ZdtzWWx0z8tXsktmBxxS9BTq6NXJ2mtCk/DnwfGi4JiI/2NTC0AM6rZAaHLoNy9qe7HMFCp0E09FG9qxnUoLPKVPCyCkUiL1Fl9l+KPM8UUzo0rCpOU2Xn4GTOJ2P/iQCA5cg588cw8039VOrRzOsPUlAEKusNiCqNl62HlEufXPf7o3xpSq4=
