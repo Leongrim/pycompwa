@@ -54,6 +54,8 @@ matrix:
     dist: bionic
     env:
     - TASK="deployment"
+    before_install:
+    - pyenv global 3.7.1
     install: echo "Skipping install stage!"
     script: echo "Skipping script stage!"
     before_deploy:
